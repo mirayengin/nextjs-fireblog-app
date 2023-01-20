@@ -8,3 +8,11 @@ export type RegisterType = {
 };
 
 
+export type ErrorType = {
+
+      username: string[];
+      email: string[];
+      password: string[];
+      password2: string[];
+
+}
