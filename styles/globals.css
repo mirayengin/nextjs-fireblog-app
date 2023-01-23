@@ -1,3 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100 font-erhan;
+  }
+}
+
+@layer  components {
+  .registerInput {
+    @apply px-5 py-2.5 rounded-md bg-[#FFDCA9]/10 text-[#7286D3] font-semibold focus:outline-none focus:bg-[#9F8772] focus:text-[#111] placeholder:text-red-600 border-2 border-[#FAAB78]
+  }
+
+  .inputDiv {
+    @apply relative;
+  }
+
+  .errorsMessage {
+    @apply absolute text-xs text-yellow-600 animate-pulse;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

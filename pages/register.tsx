@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import { RegisterType } from "../types";
+import {motion} from "framer-motion"
 
 type Props = {};
 
 const register = (props: Props) => {
   const { errorsMessage, registerFunc } = useAuth();
-  console.log(errorsMessage);
+  // console.log(errorsMessage);
 
   const {
     register,
@@ -26,55 +27,87 @@ const register = (props: Props) => {
         <title>Register</title>
       </Head>
 
-      <div className="flex  justify-center items-center h-screen">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.3 }}
+        animate={{opacity: 1, scale:1}}
+        transition={{duration:1.5}}
+        
+        className="flex  justify-center items-center h-screen">
         <form
-          className=" flex flex-col gap-6 p-6"
+          className=" flex flex-col gap-10 p-6"
           onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type="text"
-            placeholder="Username"
-            {...register("username", { required: true })}
-          />
-          {errorsMessage?.username?.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
-          <input
-            type="email"
-            placeholder="Email"
-            {...register("email", { required: true })}
-          />
-          {errorsMessage?.email?.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
-          <input
-            type="text"
-            placeholder="First Name"
-            {...register("first_name")}
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
-            {...register("last_name")}
-          />
-          <input
-            type="text"
-            placeholder="Password"
-            {...register("password", { required: true })}
-          />
-          {errorsMessage?.password?.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
-          <input
-            type="text"
-            placeholder="Password Again"
-            {...register("password2", { required: true })}
-          />
-          {errorsMessage?.password2?.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
+          <div className="inputDiv">
+            <input
+              type="text"
+              placeholder="Username"
+              className="registerInput"
+              {...register("username", { required: true })}
+            />
+            {errorsMessage?.username?.map((item, index) => (
+              <p className="errorMessage" key={index}>
+                {item}
+              </p>
+            ))}
+          </div>
+          <div className="inputDiv">
+            <input
+              type="email"
+              placeholder="Email"
+              className="registerInput"
+              {...register("email", { required: true })}
+            />
+            {errorsMessage?.email?.map((item, index) => (
+              <p className="errorMessage" key={index}>
+                {item}
+              </p>
+            ))}
+          </div>
+          <div className="inputDiv">
+            <input
+              type="text"
+              placeholder="First Name"
+              className="registerInput"
+              {...register("first_name")}
+            />
+          </div>
+          <div className="inputDiv">
+            <input
+              type="text"
+              placeholder="Last Name"
+              className="registerInput"
+              {...register("last_name")}
+            />
+          </div>
+          <div className="inputDiv">
+            <input
+              type="text"
+              placeholder="Password"
+              className="registerInput"
+              {...register("password", { required: true })}
+            />
+            {errorsMessage?.password?.map((item, index) => (
+              <p className="errorMessage" key={index}>
+                {item}
+              </p>
+            ))}
+          </div>
+          <div className="inputDiv">
+            <input
+              type="text"
+              placeholder="Password Again"
+              className="registerInput"
+              {...register("password2", { required: true })}
+            />
+            {errorsMessage?.password2?.map((item, index) => (
+              <p className="errorMessage" key={index}>
+                {item}
+              </p>
+            ))}
+          </div>
+
           <button type="submit">Register</button>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 };
