@@ -1,36 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100 font-erhan;
+    @apply bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white font-Josefin;
   }
 }
 
-@layer  components {
+@layer components {
   .registerInput {
-    @apply px-5 py-2.5 rounded-md bg-[#FFDCA9]/10 text-[#7286D3] font-semibold focus:outline-none focus:bg-[#9F8772] focus:text-[#111] placeholder:text-red-600 border-2 border-[#FAAB78]
+    @apply px-5 py-2.5 rounded-md bg-[#d2ebcd]/10 text-[#bcc] font-semibold focus:outline-none focus:bg-[#d2ebcd] transition-all duration-300 focus:text-[#111] placeholder:text-orange-400 border-b-4  border-[#d2ebcd]/10 focus:border-orange-400;
   }
 
   .inputDiv {
     @apply relative;
   }
 
-  .errorsMessage {
-    @apply absolute text-xs text-yellow-600 animate-pulse;
+  .errorMessage {
+    @apply absolute text-xs text-red-600 animate-pulse top-[50px];
+  }
+
+  .submitButton {
+    @apply rounded-md py-2.5 bg-green-700 text-[#bcc] font-bold transition-all hover:bg-green-700/40 mt-6;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
