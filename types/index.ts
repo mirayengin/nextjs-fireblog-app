@@ -16,3 +16,9 @@ export type ErrorType = {
       password2: string[];
 
 }
+export type LoginType = {
+      email: string[];
+      password: string[];
+      password2: string[];
+
+}

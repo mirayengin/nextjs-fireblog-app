@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ErrorType, RegisterType } from "../types";
+import { ErrorType, LoginType, RegisterType } from "../types";
 import axios from "axios";
-import { REGISTER_URL } from "../constant/urls";
+import { LOGIN_URL, REGISTER_URL } from "../constant/urls";
 import { useRouter } from "next/router";
 
 const useAuth = () => {
@@ -23,7 +23,18 @@ const useAuth = () => {
     setLoading(false);
   };
 
-  return { errorsMessage, registerFunc, loading };
+  const loginFunc = async(loginInfo:LoginType) => {
+  try {
+    const { data } = await axios.post(LOGIN_URL, loginInfo);
+    setErrorsMessage(null);
+    sessionStorage.setItem("user", JSON.stringify(data));
+    router.push("/");
+  } catch (error:any) {
+    setErrorsMessage(error.response.data);
+  }
+}
+
+  return { errorsMessage, registerFunc, loading ,loginFunc};
 };
 
 export default useAuth;
