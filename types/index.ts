@@ -7,18 +7,38 @@ export type RegisterType = {
   password2: string;
 };
 
-
 export type ErrorType = {
+  username: string[];
+  email: string[];
+  password: string[];
+  password2: string[];
+  non_field_errors: string[];
+};
 
-      username: string[];
-      email: string[];
-      password: string[];
-      password2: string[];
-
-}
 export type LoginType = {
-      email: string[];
-      password: string[];
-      password2: string[];
+  username: string;
+  password: string;
+};
 
-}
+export type ProductType = {
+  amount: number;
+  brand: string;
+  created_date: string;
+  id: number;
+  rating: number | null;
+  seller: string | null;
+  seller_id: number;
+  vote: number | null;
+  name: string;
+};
+export type SellerProfileType = {
+  id: number;
+  user: string;
+  created_date: string;
+  id: number;
+  rating: number | null;
+  seller: string | null;
+  seller_id: number;
+  vote: number | null;
+  name: string;
+};

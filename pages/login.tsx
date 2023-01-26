@@ -1,16 +1,15 @@
-import Head from 'next/head'
-import React from 'react'
+import Head from "next/head";
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import useAuth from "../hooks/useAuth";
+import { LoginType } from "../types";
 import { motion } from "framer-motion";
-import { LoginType } from '../types';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import useAuth from '../hooks/useAuth';
-import Loader from '../components/loader';
+import Loader from "../components/Loader";
 
-
-type Props = {}
+type Props = {};
 
 const login = (props: Props) => {
-  const {loginFunc, errorsMessage, loading} = useAuth()
+  const { loading, errorsMessage, loginFunc } = useAuth();
 
   const {
     register,
@@ -22,10 +21,9 @@ const login = (props: Props) => {
     await loginFunc(data);
   };
 
-  
   return (
     <div>
-            <Head>
+      <Head>
         <title>Login</title>
       </Head>
 
@@ -37,48 +35,15 @@ const login = (props: Props) => {
         <form
           className=" flex flex-col gap-10"
           onSubmit={handleSubmit(onSubmit)}>
-          {/* <div className="inputDiv">
+          <div className="inputDiv">
             <input
               type="text"
               placeholder="Username"
               className="registerInput"
               {...register("username", { required: true })}
             />
-            {errorsMessage?.username?.map((item, index) => (
-              <p className="errorMessage" key={index}>
-                * {item}
-              </p>
-            ))}
-          </div> */}
-          <div className="inputDiv">
-            <input
-              type="email"
-              placeholder="Email"
-              className="registerInput"
-              {...register("email", { required: true })}
-            />
-            {errorsMessage?.email?.map((item, index) => (
-              <p className="errorMessage" key={index}>
-                * {item}
-              </p>
-            ))}
           </div>
-          {/* <div className="inputDiv">
-            <input
-              type="text"
-              placeholder="First Name"
-              className="registerInput"
-              {...register("first_name")}
-            />
-          </div> */}
-          {/* <div className="inputDiv">
-            <input
-              type="text"
-              placeholder="Last Name"
-              className="registerInput"
-              {...register("last_name")}
-            />
-          </div> */}
+
           <div className="inputDiv">
             <input
               type="text"
@@ -86,29 +51,21 @@ const login = (props: Props) => {
               className="registerInput"
               {...register("password", { required: true })}
             />
-            {errorsMessage?.password && (
-              <p className="errorMessage">* {errorsMessage.password[0]} </p>
-            )}
-          </div>
-          <div className="inputDiv">
-            <input
-              type="text"
-              placeholder="Password Again"
-              className="registerInput"
-              {...register("password2", { required: true })}
-            />
-            {errorsMessage?.password2 && (
-              <p className="errorMessage">* {errorsMessage.password2[0]} </p>
+
+            {errorsMessage?.non_field_errors && (
+              <p className="errorMessage">
+                {errorsMessage.non_field_errors[0]}
+              </p>
             )}
           </div>
 
           <button type="submit" className="submitButton">
-            {loading ? <Loader color="#bcc" /> : "Register"}
+            {loading ? <Loader color="#bcc" /> : "Login"}
           </button>
         </form>
       </motion.div>
     </div>
-  )
-}
+  );
+};
 
-export default login
+export default login;

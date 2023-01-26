@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Loader from "../components/loader";
+import Loader from "../components/Loader";
 import useAuth from "../hooks/useAuth";
 import { RegisterType } from "../types";
 import { motion } from "framer-motion";
