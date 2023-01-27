@@ -31,14 +31,14 @@ export type ProductType = {
   vote: number | null;
   name: string;
 };
+
 export type SellerProfileType = {
   id: number;
   user: string;
-  created_date: string;
-  id: number;
-  rating: number | null;
-  seller: string | null;
-  seller_id: number;
-  vote: number | null;
-  name: string;
+  user_id: number;
+  bio: string;
+  avatar: string;
+  favorites?: [];
+  cards?: [];
+  sell_products?: [];
 };
